@@ -1,4 +1,5 @@
 var http = require('http'),
+    connect = require('connect'),
     httpProxy = require('http-proxy');
 
 var selects = [];
@@ -15,9 +16,14 @@ simpleselect.func = function (node) {
 
 selects.push(simpleselect);
 
-httpProxy.createServer(
-  require('../')([], selects),
-  9000, 'localhost'
+var harmon = require('../')([], selects);
+var proxy = httpProxy.createProxyServer({target: 'http://127.0.0.1:9000'});
+
+connect.createServer(
+  harmon,
+  function (req, res) {
+    proxy.web(req, res);
+  }
 ).listen(8000);
 
 http.createServer(function (req, res) {

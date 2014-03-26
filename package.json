@@ -21,15 +21,15 @@
     "url": "https://github.com/No9/harmon/issues"
   },
   "dependencies": {
-    "http-proxy": "0.8.7",
-    "trumpet": "1.6.3"
+    "http-proxy": "~1.0.2",
+    "trumpet": "~1.6.3",
+    "connect": "~2.14.3"
   },
-  "devDependencies" : {
-        "tap" : "0.4.0"
-    },
-    "scripts" : {
-        "test" : "node test/host.js"
+  "devDependencies": {
+    "tap": "0.4.0"
   },
-  "license" : "MIT/X11"
-
+  "scripts": {
+    "test": "node test/host.js"
+  },
+  "license": "MIT/X11"
 }
